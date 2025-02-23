@@ -30,7 +30,9 @@ def main(page: ft.Page):
         "Get Started",
         on_click=lambda e: print("Button clicked!"),  # Puedes redirigir aquí a otra página
         bgcolor="blue",
-        color="white"
+        color="white",
+        width=200,
+        height=60,
     )
 
     # Contenedor principal con alineación en la parte superior
