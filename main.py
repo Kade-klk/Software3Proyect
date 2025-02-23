@@ -7,9 +7,9 @@ def main(page: ft.Page):
     header = ft.Text("Reinova", size=50, weight=ft.FontWeight.BOLD, color="black")
     subheader = ft.Text("A new way", size=20, italic=True, color="black")
 
-    # Mostrar SVG en un IFrame
-    svg_viewer = ft.IFrame(
-        src="https://raw.githubusercontent.com/Kade-klk/Software3Proyect/3b8b0a184bee5a17f69a1a95c83dbd9b05fee9c7/Imagenes/plantphoto.svg",
+    # Imagen agregada arriba del botón
+    plant_image = ft.Image(
+        src="https://github.com/Kade-klk/Software3Proyect/blob/main/Imagenes/plant.png?raw=true",
         width=250,
         height=250
     )
@@ -23,16 +23,24 @@ def main(page: ft.Page):
         height=70
     )
 
-    container = ft.Column(
+    # Contenedor principal centrado
+    content = ft.Column(
         [
-            header, subheader,
-            svg_viewer,  # Aquí va la imagen SVG
+            header,
+            subheader,
+            plant_image,
             button
         ],
         alignment=ft.MainAxisAlignment.CENTER,
         horizontal_alignment=ft.CrossAxisAlignment.CENTER
     )
 
-    page.add(container)
+    page.add(
+        ft.Container(
+            content=content,
+            alignment=ft.alignment.center,  # Centrar todo
+            expand=True  # Ocupar todo el espacio de la pantalla
+        )
+    )
 
 ft.app(target=main)
