@@ -21,10 +21,10 @@ def main(page: ft.Page):
                 controls=[
                     ft.CircleAvatar(content=ft.Icon(ft.icons.PERSON)),
                     ft.Column([
-                        ft.Text("Name", weight=ft.FontWeight.BOLD),
-                        ft.Text("Age"),
+                        ft.Text("Name", weight=ft.FontWeight.BOLD, color=ft.colors.BLACK),
+                        ft.Text("Age", color=ft.colors.BLACK),
                     ]),
-                    ft.Text("Data", weight=ft.FontWeight.W_500)
+                    ft.Text("Data", weight=ft.FontWeight.W_500, color=ft.colors.BLACK),
                 ],
                 alignment=ft.MainAxisAlignment.SPACE_BETWEEN
             ),
@@ -35,23 +35,23 @@ def main(page: ft.Page):
 
     header = ft.Row([
         ft.IconButton(ft.icons.ARROW_BACK),
-        ft.Text("Customers", size=20, weight=ft.FontWeight.BOLD),
+        ft.Text("Customers", size=20, weight=ft.FontWeight.BOLD, color=ft.colors.BLACK),
         ft.CircleAvatar(content=ft.Icon(ft.icons.PERSON))
     ], alignment=ft.MainAxisAlignment.SPACE_BETWEEN)
 
     buttons = ft.Row([
         ft.Column([
             ft.IconButton(ft.icons.ADD, on_click=add_customer),
-            ft.Text("Add Customer")
+            ft.Text("Add Customer", color=ft.colors.BLACK)
         ], alignment=ft.MainAxisAlignment.CENTER),
         ft.Column([
             ft.IconButton(ft.icons.REMOVE, on_click=delete_customer),
-            ft.Text("Delete Customer")
+            ft.Text("Delete Customer", color=ft.colors.RED)
         ], alignment=ft.MainAxisAlignment.CENTER)
     ], alignment=ft.MainAxisAlignment.SPACE_EVENLY)
 
     customer_list = ft.Column()
 
-    page.add(header, buttons, ft.Text("Customer List", size=16, weight=ft.FontWeight.BOLD), customer_list)
+    page.add(header, buttons, ft.Text("Customer List", size=16, weight=ft.FontWeight.BOLD, color=ft.colors.BLACK), customer_list)
 
 ft.app(target=main)
