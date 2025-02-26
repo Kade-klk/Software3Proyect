@@ -1,11 +1,6 @@
 import flet as ft
 
-def main(page: ft.Page):
-    page.title = "Customers"
-    page.bgcolor = "#CBEAD3"
-    page.window_width = 420
-    page.window_height = 900
-
+def customer_list(page):
     def add_customer(e):
         customer_list.controls.append(create_customer_item())
         page.update()
@@ -34,7 +29,7 @@ def main(page: ft.Page):
         )
 
     header = ft.Row([
-        ft.IconButton(ft.icons.ARROW_BACK),
+        ft.IconButton(ft.icons.ARROW_BACK, on_click=lambda e: page.go("/")),  # Regresar a la pantalla anterior
         ft.Text("Customers", size=20, weight=ft.FontWeight.BOLD, color=ft.colors.BLACK),
         ft.CircleAvatar(content=ft.Icon(ft.icons.PERSON))
     ], alignment=ft.MainAxisAlignment.SPACE_BETWEEN)
@@ -52,6 +47,13 @@ def main(page: ft.Page):
 
     customer_list = ft.Column()
 
-    page.add(header, buttons, ft.Text("Customer List", size=16, weight=ft.FontWeight.BOLD, color=ft.colors.BLACK), customer_list)
-
-ft.app(target=main)
+    return ft.View(
+        route="/customers",
+        bgcolor="#CBEAD3",  # Corregido para que el fondo sea verde claro
+        controls=[
+            header,
+            buttons,
+            ft.Text("Customer List", size=16, weight=ft.FontWeight.BOLD, color=ft.colors.BLACK),
+            customer_list
+        ]
+    )
